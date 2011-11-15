@@ -3,7 +3,7 @@ import pymongo
 
 db = pymongo.Connection('localhost', 1001).wp
 
-CATEGORY_CSV = 'page_info.csv'
+CATEGORY_CSV = '../data/category.csv'
 
 pageReader = csv.reader(open(CATEGORY_CSV, 'r'), delimiter=',')
 count = 0
