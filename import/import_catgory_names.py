@@ -1,7 +1,7 @@
 import csv
 import pymongo
 
-db = pymongo.Connection('localhost', 1001).wp
+db = pymongo.Connection('localhost', 1000).wp
 
 CATEGORY_CSV = '../data/category.csv'
 
@@ -11,11 +11,12 @@ count = 0
 for row in pageReader:
     if count % 10000 == 0:
         print count
-
-    db.pages.insert({
-        "_id" : int(row[1])
-        "name": row[0]
-    })
-
+    try:
+    	db.categories.insert({
+        	"_id" : row[1],
+	        "name": row[0]
+    	})
+    except Exception as e:
+	print "not unicode"
     count += 1
     
