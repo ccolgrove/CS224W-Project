@@ -8,6 +8,12 @@ count = 0
 for row in catReader:
     if count % 10000 == 0:
         print count
+    print {
+        "page_id":int(row[0])
+    }, {
+        "$addToSet": {"categories" : int(row[1]) }
+    }
+    '''
     db.pages.update({
         "page_id": row[0]
     },{
@@ -15,5 +21,6 @@ for row in catReader:
             { "categories" : category_id } 
         }
     })
+    '''
     count += 1
     
