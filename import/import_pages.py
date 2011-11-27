@@ -11,8 +11,8 @@ for row in pageReader:
     if count % 10000 == 0:
         print count
     db.pages.insert({
-        "page_id": int(row[0]),
-        "page_title": row[1].decode('latin-1').encode('utf-8'),
+        "_id": int(row[0]),
+        "title": row[1].decode('latin-1').encode('utf-8'),
         "page_is_redirect": bool(row[2]),
         "page_is_new": bool(row[3]),
         "page_latest": bool(row[4]),    
