@@ -12,12 +12,16 @@ pageReader = csv.reader(open(CATEGORY_CSV, 'r'), delimiter=',')
 count = 0
 
 for row in pageReader:
-    if count % 10000 == 0:
-        print count
-    
-    db.categories.insert({
-        "_id" : int(row[1]),
-	    "name": row[0]
-    })
-    count += 1
+	if count % 10000 == 0:
+		print count
+        
+	if count > 430000:
+		id = int(row[-1])
+		name = ','.join(row[0:-1])
+		name = name.decode('latin-1').encode('utf-8')
+		db.categories.insert({
+     		"_id" : id,
+	   		"name": name
+    	})
+	count += 1
     
