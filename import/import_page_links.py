@@ -3,14 +3,9 @@ import pymongo
 
 db = pymongo.Connection('localhost', 1000).wp
 
-SERVER = 'ec2-50-112-32-119.us-west-2.compute.amazonaws.com'
-PORT = 1000 #1000
-
-clouddb = pymongo.Connection(SERVER, PORT).wp
-
-f = open('page_links.csv', 'r')
-count = 0
-
+f = open('/store/page_links.csv', 'r')
+count = 60100000
+lines = f.readlines(60100000)
 while 1:
     lines = f.readlines(1000000)
     if not lines:
@@ -20,24 +15,22 @@ while 1:
         if count % 10000 == 0:
             print count
             print "Percent done %2f" % (count/float(336720000)*100)
-            
         start = int(row[0])
-        end_document = db.pages.find_one({"page_title": unicode(row[1].strip(), "utf-8")}, fields=["page_id"])
-        
+        end_document = db.pages.find_one({"title": row[1].strip().decode('latin-1').encode('utf-8')}, fields=["_id"])
         if end_document is not None:
                 
-                end = int(end_document["page_id"])
+                end = int(end_document["_id"])
                 
-                clouddb.pages.update({
+                db.pages.update({
                     "_id": start
                 },{
-                    "$push": {"outgoing_links_2" : end}
+                    "$push": {"outgoing_edges" : end}
                 })
     
-                clouddb.pages.update({
+                db.pages.update({
                     "_id": end
                 },{
-                    "$push": {"incoming_links_2" : start}
+                    "$push": {"incoming_edges" : start}
                 })
                 
         count += 1
