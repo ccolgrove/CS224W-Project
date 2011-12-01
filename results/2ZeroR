@@ -1,0 +1,44 @@
+=== Run information ===
+
+Scheme:weka.classifiers.rules.ZeroR 
+Relation:     features_partialdb
+Instances:    99
+Attributes:   5
+              Class
+              OutLinkNum
+              OutLinkProp
+              InLinkNum
+              InLinkProp
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+ZeroR predicts class value: Actor
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          49               49.4949 %
+Incorrectly Classified Instances        50               50.5051 %
+Kappa statistic                         -0.0185
+Mean absolute error                      0.5   
+Root mean squared error                  0.5   
+Relative absolute error                100      %
+Root relative squared error            100      %
+Total Number of Instances               99     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.082     0.1        0.444     0.082     0.138      0.491    Nonactor
+                 0.9       0.918      0.5       0.9       0.643      0.491    Actor
+Weighted Avg.    0.495     0.513      0.473     0.495     0.393      0.491
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+  4 45 |  a = Nonactor
+  5 45 |  b = Actor
+

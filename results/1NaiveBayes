@@ -1,0 +1,60 @@
+=== Run information ===
+
+Scheme:weka.classifiers.bayes.NaiveBayes 
+Relation:     features
+Instances:    90
+Attributes:   3
+              Class
+              OutLinkNum
+              OutLinkProp
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                  Class
+Attribute      Nonactor    Actor
+                 (0.48)   (0.52)
+=================================
+OutLinkNum
+  mean             0.062    0.227
+  std. dev.       0.4444   1.2089
+  weight sum          43       47
+  precision       2.6667   2.6667
+
+OutLinkProp
+  mean            0.0015   0.0022
+  std. dev.       0.0094   0.0052
+  weight sum          43       47
+  precision       0.0057   0.0057
+
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          42               46.6667 %
+Incorrectly Classified Instances        48               53.3333 %
+Kappa statistic                         -0.1037
+Mean absolute error                      0.5107
+Root mean squared error                  0.5349
+Relative absolute error                102.231  %
+Root relative squared error            106.9565 %
+Total Number of Instances               90     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.07      0.17       0.273     0.07      0.111      0.412    Nonactor
+                 0.83      0.93       0.494     0.83      0.619      0.412    Actor
+Weighted Avg.    0.467     0.567      0.388     0.467     0.376      0.412
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+  3 40 |  a = Nonactor
+  8 39 |  b = Actor
+

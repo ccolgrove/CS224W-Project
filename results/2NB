@@ -1,0 +1,74 @@
+=== Run information ===
+
+Scheme:weka.classifiers.bayes.NaiveBayes 
+Relation:     features_partialdb
+Instances:    99
+Attributes:   5
+              Class
+              OutLinkNum
+              OutLinkProp
+              InLinkNum
+              InLinkProp
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                  Class
+Attribute      Nonactor    Actor
+                  (0.5)    (0.5)
+=================================
+OutLinkNum
+  mean              0.24  31.9872
+  std. dev.         1.96  57.5659
+  weight sum          49       50
+  precision        11.76    11.76
+
+OutLinkProp
+  mean            0.0059   0.0883
+  std. dev.       0.0409   0.1154
+  weight sum          49       50
+  precision       0.0152   0.0152
+
+InLinkNum
+  mean            0.3939   18.914
+  std. dev.       2.7289  42.9814
+  weight sum          49       50
+  precision         9.65     9.65
+
+InLinkProp
+  mean            0.0328   0.1321
+  std. dev.       0.1639   0.1604
+  weight sum          49       50
+  precision       0.0357   0.0357
+
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          71               71.7172 %
+Incorrectly Classified Instances        28               28.2828 %
+Kappa statistic                          0.437 
+Mean absolute error                      0.2885
+Root mean squared error                  0.5305
+Relative absolute error                 57.701  %
+Root relative squared error            106.097  %
+Total Number of Instances               99     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.959     0.52       0.644     0.959     0.77       0.775    Nonactor
+                 0.48      0.041      0.923     0.48      0.632      0.773    Actor
+Weighted Avg.    0.717     0.278      0.785     0.717     0.7        0.774
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 47  2 |  a = Nonactor
+ 26 24 |  b = Actor
+
