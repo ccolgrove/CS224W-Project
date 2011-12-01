@@ -16,11 +16,10 @@ while 1:
             print count
             print "Percent done %2f" % (count/float(336720000)*100)
         start = int(row[0])
-        end_document = db.pages.find_one({"title": row[1].strip().decode('latin-1').encode('utf-8')}, fields=["_id"])
+        end = int(row[1])
+        
         if end_document is not None:
-                
-                end = int(end_document["_id"])
-                
+
                 db.pages.update({
                     "_id": start
                 },{
