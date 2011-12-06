@@ -38,18 +38,23 @@ def get_features():
   #print db.categories.find_one()
   #page = db.pages.find_one({"_id": 12})
   #print page
-  #page = db.pages.find_one({"_id": 43568}) #tom hanks
-  #print page
+  # page = db.pages.find_one({"_id": 43568}) #tom hanks
+  # print page
   
-  file = open('features_5.csv', 'wb')
+  file = open('features_7.csv', 'wb')
   fileWriter = csv.writer(file)
   fileWriter.writerow(['Class', 'OutLinkNum', 'OutLinkProp','OutLinkNum2', 'OutLinkProp2', 'InLinkNum', 'InLinkProp','InLinkNum2', 'InLinkProp2'])
   file.close()
 
-  catReader = csv.reader(open('american_actors_categories_catids_noDuplicates.txt', 'rb'))
-  actorCategoryIds = []
-  for row in catReader:
-    actorCategoryIds.append(row[0])
+  # catReader = csv.reader(open('american_actors_categories_catids_noDuplicates.txt', 'rb'))
+  # actorCategoryIds = []
+  # for row in catReader:
+  #   actorCategoryIds.append(row[0])
+
+  actorPageReader = csv.reader(open('actor_ids.txt'))
+  allActorPageIds = set()
+  for row in actorPageReader:
+    allActorPageIds.add(int(row[0]))
 
   ''' 
   # getting category ids from db
@@ -103,11 +108,11 @@ def get_features():
   
   print 'Found sample set'
 
-  p = Pool(50)
+  p = Pool(1)
 
-  args = itertools.izip(actorPages,itertools.repeat(set(actorCategoryIds)))
+  args = itertools.izip(actorPages,itertools.repeat(allActorPageIds))
   p.map(get_features_for_actor_page_star , args)
-  args = itertools.izip(nonActorPages,itertools.repeat(set(actorCategoryIds)))
+  args = itertools.izip(nonActorPages,itertools.repeat(allActorPageIds))
   p.map(get_features_for_nonActor_page_star, args)
 
 def get_features_for_actor_page_star(page_actCat):
@@ -122,7 +127,7 @@ def get_features_for_actor_page(page, actCat):
     data = calculate_network_features(page, actCat, data)
     print 'Got features!'
     lock.acquire()
-    file = open('features_5.csv', 'a')
+    file = open('features_7.csv', 'a')
     fileWriter = csv.writer(file)
     fileWriter.writerow(data)
     file.close()
@@ -139,7 +144,7 @@ def get_features_for_nonActor_page(page, actCat):
     data = calculate_network_features(page, actCat, data)
     print 'Got features!'
     lock.acquire()
-    file = open('features_5.csv', 'a')
+    file = open('features_7.csv', 'a')
     fileWriter = csv.writer(file)
     fileWriter.writerow(data)
     file.close()
@@ -155,7 +160,7 @@ def calculate_network_features(page, actCat, data):
   data = calculate_link_features([page], actCat, u'ie', LEVELS, data)
   # data = calculate_link_features([page], actCat, u'outgoing_edges', LEVELS, data)
   # data = calculate_link_features([page], actCat, u'incoming_edges', LEVELS, data)
-  print data
+  #print data
   #db.pages.update({"_id": 12}, {"$set": { "field" : "value" } }}
   return data
 
@@ -172,26 +177,24 @@ def calculate_link_features(pages,  actCat, feature, levels, data):
       # else:
       #   print 'looking at page without title'
       if feature in page:
-        pageCursor = db.pages.find({"_id":{'$in': page[feature]}})
-        # print pageCursor.count()
-        for ind in range(pageCursor.count()):
+        for linkedPageId in page[feature]:
           numTotalLinks += 1
-          dbLinkedPage = pageCursor[ind]
-          nextPages.append(dbLinkedPage)
-          if dbLinkedPage != None and u'categories' in dbLinkedPage:
-            #print 'here'
-            otherPageCats = dbLinkedPage[u'categories']
-            sameCats = actCat.intersection(set(otherPageCats))
-            #print sameCats
-            if len(sameCats) != 0:
-              numActorLinks += 1
+          if linkedPageId in actCat:
+            numActorLinks += 1
+        if level < levels-1:
+          pageCursor = db.pages.find({"_id":{'$in': page[feature]}})
+          print 'querying db'
+          for ind in range(pageCursor.count()):
+            dbLinkedPage = pageCursor[ind]
+            nextPages.append(dbLinkedPage)
     data.append(numActorLinks)
     if numTotalLinks == 0:
       data.append(0)
     else: 
       data.append(float(numActorLinks)/numTotalLinks)
+    #print data
     curPages = nextPages
-  # print data
+  print data
   return data
 
 # import cProfile
