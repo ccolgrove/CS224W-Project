@@ -1,0 +1,73 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.SMO -C 1.0 -L 0.0010 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -C 250007 -E 1.0"
+Relation:     features_7-weka.filters.unsupervised.attribute.StringToNominal-R1
+Instances:    100
+Attributes:   9
+              Class
+              OutLinkNum
+              OutLinkProp
+              OutLinkNum2
+              OutLinkProp2
+              InLinkNum
+              InLinkProp
+              InLinkNum2
+              InLinkProp2
+Test mode:    split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+SMO
+
+Kernel used:
+  Linear Kernel: K(x,y) = <x,y>
+
+Classifier for classes: Actor, Nonactor
+
+BinarySMO
+
+Machine linear: showing attribute weights, not support vectors.
+
+        -0.2813 * (normalized) OutLinkNum
+ +      -1.4842 * (normalized) OutLinkProp
+ +      -0.4758 * (normalized) OutLinkNum2
+ +      -2.3559 * (normalized) OutLinkProp2
+ +      -0.4428 * (normalized) InLinkNum
+ +       0.1665 * (normalized) InLinkProp
+ +      -0.4774 * (normalized) InLinkNum2
+ +      -2.3703 * (normalized) InLinkProp2
+ +       1.0093
+
+Number of kernel evaluations: 312 (55.932% cached)
+
+
+
+Time taken to build model: 0.01 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances          31               91.1765 %
+Incorrectly Classified Instances         3                8.8235 %
+Kappa statistic                          0.8235
+Mean absolute error                      0.0882
+Root mean squared error                  0.297 
+Relative absolute error                 17.3765 %
+Root relative squared error             58.2852 %
+Coverage of cases (0.95 level)          91.1765 %
+Mean rel. region size (0.95 level)      50      %
+Total Number of Instances               34     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.85      0          1         0.85      0.919      0.925    Actor
+                 1         0.15       0.824     1         0.903      0.925    Nonactor
+Weighted Avg.    0.912     0.062      0.927     0.912     0.912      0.925
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 17  3 |  a = Actor
+  0 14 |  b = Nonactor
+

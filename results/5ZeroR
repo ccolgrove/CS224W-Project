@@ -1,0 +1,33 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.ZeroR 
+Relation:     features_7-weka.filters.unsupervised.attribute.StringToNominal-R1
+Instances:    100
+Attributes:   9
+              Class
+              OutLinkNum
+              OutLinkProp
+              OutLinkNum2
+              OutLinkProp2
+              InLinkNum
+              InLinkProp
+              InLinkNum2
+              InLinkProp2
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+ZeroR predicts class value: 0.03990766705088141
+
+Time taken to build model: 0 seconds
+
+=== Cross-validation ===
+=== Summary ===
+
+Correlation coefficient                 -0.2077
+Mean absolute error                      0.042 
+Root mean squared error                  0.0493
+Relative absolute error                100      %
+Root relative squared error            100      %
+Total Number of Instances              100     
+

@@ -1,0 +1,127 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.MultilayerPerceptron -L 0.3 -M 0.2 -N 5000 -V 0 -S 0 -E 20 -H a
+Relation:     features_7-weka.filters.unsupervised.attribute.StringToNominal-R1
+Instances:    100
+Attributes:   9
+              Class
+              OutLinkNum
+              OutLinkProp
+              OutLinkNum2
+              OutLinkProp2
+              InLinkNum
+              InLinkProp
+              InLinkNum2
+              InLinkProp2
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+Sigmoid Node 0
+    Inputs    Weights
+    Threshold    -7.659146383406578
+    Node 2    2.8158093530717263
+    Node 3    10.967230986595087
+    Node 4    12.419817958359836
+    Node 5    -13.881962894288613
+    Node 6    9.708500829920387
+Sigmoid Node 1
+    Inputs    Weights
+    Threshold    7.6835239663708075
+    Node 2    -2.8402681201354536
+    Node 3    -10.967361556316147
+    Node 4    -12.420882156332741
+    Node 5    13.862352637025209
+    Node 6    -9.708137875545487
+Sigmoid Node 2
+    Inputs    Weights
+    Threshold    10.251068098714029
+    Attrib OutLinkNum    -4.254147761533403
+    Attrib OutLinkProp    17.158247083849204
+    Attrib OutLinkNum2    -1.9356731831445673
+    Attrib OutLinkProp2    2.514772943454831
+    Attrib InLinkNum    0.016248975301314462
+    Attrib InLinkProp    -2.7233131571988816
+    Attrib InLinkNum2    -1.867653907324722
+    Attrib InLinkProp2    2.184672507976899
+Sigmoid Node 3
+    Inputs    Weights
+    Threshold    7.267047446256388
+    Attrib OutLinkNum    -3.763912146027492
+    Attrib OutLinkProp    -5.908497666046018
+    Attrib OutLinkNum2    -2.442242928111441
+    Attrib OutLinkProp2    10.519949016022972
+    Attrib InLinkNum    0.4479552588190066
+    Attrib InLinkProp    1.1056296182387766
+    Attrib InLinkNum2    4.191184025668187
+    Attrib InLinkProp2    10.459282017851745
+Sigmoid Node 4
+    Inputs    Weights
+    Threshold    -0.8194716984434983
+    Attrib OutLinkNum    0.7664402957932649
+    Attrib OutLinkProp    -5.2742996388328045
+    Attrib OutLinkNum2    -9.18554696811349
+    Attrib OutLinkProp2    -3.688645252032354
+    Attrib InLinkNum    6.7638121154325885
+    Attrib InLinkProp    7.467696816988987
+    Attrib InLinkNum2    8.86378259425337
+    Attrib InLinkProp2    -12.399227557478232
+Sigmoid Node 5
+    Inputs    Weights
+    Threshold    -16.453744461099895
+    Attrib OutLinkNum    7.126894974031937
+    Attrib OutLinkProp    -26.972811292699287
+    Attrib OutLinkNum2    5.319786253558552
+    Attrib OutLinkProp2    -0.615249695157474
+    Attrib InLinkNum    -2.3576053919314273
+    Attrib InLinkProp    3.5867000512306206
+    Attrib InLinkNum2    -0.3064968811742786
+    Attrib InLinkProp2    -3.455637241222194
+Sigmoid Node 6
+    Inputs    Weights
+    Threshold    6.469540464213437
+    Attrib OutLinkNum    -0.05586267614506562
+    Attrib OutLinkProp    12.994345747508456
+    Attrib OutLinkNum2    0.6590047959046468
+    Attrib OutLinkProp2    -2.9113088614446907
+    Attrib InLinkNum    -0.43306965140557707
+    Attrib InLinkProp    -2.4707482352734056
+    Attrib InLinkNum2    3.293425355747745
+    Attrib InLinkProp2    5.854325118165594
+Class Actor
+    Input
+    Node 0
+Class Nonactor
+    Input
+    Node 1
+
+
+Time taken to build model: 1.57 seconds
+
+=== Evaluation on training set ===
+=== Summary ===
+
+Correctly Classified Instances         100              100      %
+Incorrectly Classified Instances         0                0      %
+Kappa statistic                          1     
+Mean absolute error                      0.0078
+Root mean squared error                  0.0143
+Relative absolute error                  1.5578 %
+Root relative squared error              2.8642 %
+Coverage of cases (0.95 level)         100      %
+Mean rel. region size (0.95 level)      51      %
+Total Number of Instances              100     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         0          1         1         1          1        Actor
+                 1         0          1         1         1          1        Nonactor
+Weighted Avg.    1         0          1         1         1          1    
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 50  0 |  a = Actor
+  0 50 |  b = Nonactor
+

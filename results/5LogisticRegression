@@ -1,0 +1,78 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     features_7-weka.filters.unsupervised.attribute.StringToNominal-R1
+Instances:    100
+Attributes:   9
+              Class
+              OutLinkNum
+              OutLinkProp
+              OutLinkNum2
+              OutLinkProp2
+              InLinkNum
+              InLinkProp
+              InLinkNum2
+              InLinkProp2
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                                Class
+Variable                        Actor
+=====================================
+OutLinkNum                   119.9605
+OutLinkProp                -2895.6451
+OutLinkNum2                   -0.6079
+OutLinkProp2                5414.4342
+InLinkNum                    127.0546
+InLinkProp                  -1488.803
+InLinkNum2                     0.0486
+InLinkProp2                 2639.4719
+Intercept                   -171.5005
+
+
+Odds Ratios...
+                                Class
+Variable                        Actor
+=====================================
+OutLinkNum      1.2536156872017973E52
+OutLinkProp                         0
+OutLinkNum2                    0.5445
+OutLinkProp2                 Infinity
+InLinkNum       1.5105347604795882E55
+InLinkProp                          0
+InLinkNum2                     1.0498
+InLinkProp2                  Infinity
+
+
+Time taken to build model: 0.07 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          91               91      %
+Incorrectly Classified Instances         9                9      %
+Kappa statistic                          0.82  
+Mean absolute error                      0.09  
+Root mean squared error                  0.2999
+Relative absolute error                 17.9968 %
+Root relative squared error             59.9893 %
+Coverage of cases (0.95 level)          91      %
+Mean rel. region size (0.95 level)      50      %
+Total Number of Instances              100     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.9       0.08       0.918     0.9       0.909      0.959    Actor
+                 0.92      0.1        0.902     0.92      0.911      0.969    Nonactor
+Weighted Avg.    0.91      0.09       0.91      0.91      0.91       0.964
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 45  5 |  a = Actor
+  4 46 |  b = Nonactor
+
