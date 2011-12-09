@@ -5,6 +5,7 @@ import json
 import random
 import numpy
 import itertools
+import sys
 from multiprocessing import Pool
 from multiprocessing import Lock
 
@@ -15,7 +16,9 @@ PORT = 1000
 
 db = pymongo.Connection(SERVER, PORT).wp
 
-LEVELS = 2
+LEVELS = 4
+haveOneHopCats = False
+NUM_THREADS = 1
 #ACTOR_CATEGORIES = set()
 #fileWriter = csv.writer(open('features_3.csv', 'wb'))
 lock = Lock()
@@ -41,9 +44,16 @@ def get_features():
   # page = db.pages.find_one({"_id": 43568}) #tom hanks
   # print page
   
-  file = open('features_7.csv', 'wb')
+  file = open(sys.argv[1], 'wb')
   fileWriter = csv.writer(file)
-  fileWriter.writerow(['Class', 'OutLinkNum', 'OutLinkProp','OutLinkNum2', 'OutLinkProp2', 'InLinkNum', 'InLinkProp','InLinkNum2', 'InLinkProp2'])
+  labels = ['PageId','Class']
+  for level in range(LEVELS):
+    labels.append('OutLinkNum'+str(level))
+    labels.append('OutLinkProp'+str(level))
+  for level in range(LEVELS):
+    labels.append('InLinkNum'+str(level))
+    labels.append('InLinkProp'+str(level))
+  fileWriter.writerow(labels)
   file.close()
 
   # catReader = csv.reader(open('american_actors_categories_catids_noDuplicates.txt', 'rb'))
@@ -55,6 +65,11 @@ def get_features():
   allActorPageIds = set()
   for row in actorPageReader:
     allActorPageIds.add(int(row[0]))
+
+  actorPageReader = csv.reader(open('actor_one_hop_ids.txt'))
+  allActorAndNeighborPageIds = set()
+  for row in actorPageReader:
+    allActorAndNeighborPageIds.add(int(row[0]))
 
   ''' 
   # getting category ids from db
@@ -87,114 +102,121 @@ def get_features():
 
   nonActorPages = []
   nonActorPageIds = [int(line) for line in open('random_nonActors.txt', 'r').readlines()]
-  for pageId in nonActorPageIds:
-    dbPage = db.pages.find_one({"_id": pageId})
-    if dbPage != None:
-      nonActorPages.append(dbPage)
-  nonActorPages = nonActorPages[0:50]
+  # for pageId in nonActorPageIds:
+  #   dbPage = db.pages.find_one({"_id": pageId})
+  #   if dbPage != None:
+  #     nonActorPages.append(dbPage)
+  # nonActorPages = nonActorPages[0:50]
+  nonActorPages = nonActorPageIds[0:50]
 
   #db.pages.find({u'categories': {'$nin': actorCategoryIds}}).limit(2000)
 
-  actorPages = []
+  # actorPages = []
   actorPageIds = [int(line) for line in open('random_actors.txt', 'r').readlines()]
-  for pageId in actorPageIds:
-    dbPage = db.pages.find_one({"_id": pageId})
-    if dbPage != None:
-      actorPages.append(dbPage)
-  actorPages = actorPages[0:50]
+  # for pageId in actorPageIds:
+    # dbPage = db.pages.find_one({"_id": pageId})
+    # if dbPage != None:
+      # actorPages.append(dbPage)
+  # actorPages = actorPages[0:50]
   #actorPages = [actorPages[20]]
+  actorPages = actorPageIds[0:50]
   
   #db.pages.find({u'categories': {'$in':actorCategoryIds}}).limit(2000)
   
   print 'Found sample set'
 
-  p = Pool(1)
+  p = Pool(NUM_THREADS)
 
-  args = itertools.izip(actorPages,itertools.repeat(allActorPageIds))
-  p.map(get_features_for_actor_page_star , args)
-  args = itertools.izip(nonActorPages,itertools.repeat(allActorPageIds))
+  args = itertools.izip(actorPages,itertools.repeat(allActorPageIds),itertools.repeat(allActorAndNeighborPageIds))
+  p.map(get_features_for_actor_page_star, args)
+  args = itertools.izip(nonActorPages,itertools.repeat(allActorPageIds),itertools.repeat(allActorAndNeighborPageIds))
   p.map(get_features_for_nonActor_page_star, args)
 
-def get_features_for_actor_page_star(page_actCat):
-  return get_features_for_actor_page(*page_actCat)
+def get_features_for_actor_page_star(page_actCat_actPlusCat):
+  return get_features_for_actor_page(*page_actCat_actPlusCat)
 
-def get_features_for_nonActor_page_star(page_actCat):
-  return get_features_for_nonActor_page(*page_actCat)
+def get_features_for_nonActor_page_star(page_actCat_actPlusCat):
+  return get_features_for_nonActor_page(*page_actCat_actPlusCat)
 
-def get_features_for_actor_page(page, actCat):
-  data = ['Actor']
-  try: 
-    data = calculate_network_features(page, actCat, data)
-    print 'Got features!'
-    lock.acquire()
-    file = open('features_7.csv', 'a')
-    fileWriter = csv.writer(file)
-    fileWriter.writerow(data)
-    file.close()
-    lock.release()
-  except Exception as e:
-    if 'title' in page:
-      print 'Couldn\'t get features for ' + page['title']
-    else:
-      print 'Couldn\'t get features for page with missing title'
+def get_features_for_actor_page(pageId, actCat, actPlusCat):
+  data = [pageId, 'Actor']
+  # try: 
+  data = calculate_network_features(pageId, actCat, actPlusCat, data)
+  print 'Got features!'
+  lock.acquire()
+  file = open(sys.argv[1], 'a')
+  fileWriter = csv.writer(file)
+  fileWriter.writerow(data)
+  file.close()
+  lock.release()
+  # except Exception as e:
+  #   print 'Couldn\'t get features for ' + str(pageId)
 
-def get_features_for_nonActor_page(page, actCat):
-  data = ['Nonactor']
-  try:
-    data = calculate_network_features(page, actCat, data)
-    print 'Got features!'
-    lock.acquire()
-    file = open('features_7.csv', 'a')
-    fileWriter = csv.writer(file)
-    fileWriter.writerow(data)
-    file.close()
-    lock.release()
-  except Exception as e:
-    if 'title' in page:
-      print 'Couldn\'t get features for ' + page['title']
-    else:
-      print 'Couldn\'t get features for page with missing title'
+def get_features_for_nonActor_page(pageId, actCat, actPlusCat):
+  data = [pageId, 'Nonactor']
+  # try:
+  data = calculate_network_features(pageId, actCat, actPlusCat, data)
+  print 'Got features!'
+  lock.acquire()
+  file = open(sys.argv[1], 'a')
+  fileWriter = csv.writer(file)
+  fileWriter.writerow(data)
+  file.close()
+  lock.release()
+  # except Exception as e:
+  #   print 'Couldn\'t get features for ' + str(pageId)
 
-def calculate_network_features(page, actCat, data):
-  data = calculate_link_features([page], actCat, u'oe', LEVELS, data)
-  data = calculate_link_features([page], actCat, u'ie', LEVELS, data)
-  # data = calculate_link_features([page], actCat, u'outgoing_edges', LEVELS, data)
-  # data = calculate_link_features([page], actCat, u'incoming_edges', LEVELS, data)
-  #print data
+def calculate_network_features(pageId, actCat, actPlusCat, data):
+  data = calculate_link_features(pageId, actCat, actPlusCat, u'oe', LEVELS, data)
+  data = calculate_link_features(pageId, actCat, actPlusCat, u'ie', LEVELS, data)
+  print data
   #db.pages.update({"_id": 12}, {"$set": { "field" : "value" } }}
   return data
 
-def calculate_link_features(pages,  actCat, feature, levels, data):
-  curPages = pages
-  for level in range(levels):
-    # print 'at level '+str(level)
+def calculate_link_features(pageId,  actCat, actPlusCat, feature, levels, data):
+  # level 0
+  numActorLinks = 0
+  numTotalLinks = 0
+  nextPageIds = []
+  page = db.pages.find_one({"_id": pageId})
+  if page != None and feature in page:
+    for linkedPageId in page[feature]:
+      numTotalLinks += 1
+      if linkedPageId in actCat:
+        numActorLinks += 1
+      nextPageIds.append(linkedPageId)
+  data.append(numActorLinks)
+  if numTotalLinks == 0:
+    data.append(0)
+  else: 
+    data.append(float(numActorLinks)/numTotalLinks)
+  
+  # other levels
+  if haveOneHopCats:
+    curPageIds = [pageId]
+  else:
+    curPageIds = nextPageIds
+  for level in range(levels)[1:]:
     numActorLinks = 0
     numTotalLinks = 0
-    nextPages = []
-    for page in curPages:
-      # if 'title' in page:
-      #   print 'looking at page '+page['title']
-      # else:
-      #   print 'looking at page without title'
+    nextPageIds = []
+    pageCursor = db.pages.find({"_id":{'$in': curPageIds}})
+    for page in pageCursor:
       if feature in page:
         for linkedPageId in page[feature]:
           numTotalLinks += 1
-          if linkedPageId in actCat:
+          if (haveOneHopCats and (not linkedPageId in actCat ) and (linkedPageId in actPlusCat))\
+              or ((not haveOneHopCats) and (linkedPageId in actCat)):
             numActorLinks += 1
-        if level < levels-1:
-          pageCursor = db.pages.find({"_id":{'$in': page[feature]}})
-          print 'querying db'
-          for ind in range(pageCursor.count()):
-            dbLinkedPage = pageCursor[ind]
-            nextPages.append(dbLinkedPage)
+          nextPageIds.append(linkedPageId)
     data.append(numActorLinks)
     if numTotalLinks == 0:
       data.append(0)
     else: 
       data.append(float(numActorLinks)/numTotalLinks)
     #print data
-    curPages = nextPages
-  print data
+    curPageIds = nextPageIds
+  #print data
   return data
 
 # import cProfile
