@@ -1,3 +1,6 @@
+# example run: python getFeaturesUsingDB.py \
+#  "actor_sample_ids_file" "all_sample_ids_file" "output_file"
+
 import pymongo
 import csv
 import urllib2
@@ -44,7 +47,7 @@ def get_features():
   # page = db.pages.find_one({"_id": 43568}) #tom hanks
   # print page
   
-  file = open(sys.argv[1], 'wb')
+  file = open(sys.argv[3], 'wb')
   fileWriter = csv.writer(file)
   labels = ['PageId','Class']
   for level in range(LEVELS):
@@ -101,7 +104,8 @@ def get_features():
   '''
 
   nonActorPages = []
-  nonActorPageIds = [int(line) for line in open('random_nonActors.txt', 'r').readlines()]
+  # nonActorPageIds = [int(line) for line in open('random_nonActors.txt', 'r').readlines()]
+  nonActorPageIds = [int(line) for line in open(sys.argv[2], 'r').readlines()]
   # for pageId in nonActorPageIds:
   #   dbPage = db.pages.find_one({"_id": pageId})
   #   if dbPage != None:
@@ -112,7 +116,8 @@ def get_features():
   #db.pages.find({u'categories': {'$nin': actorCategoryIds}}).limit(2000)
 
   # actorPages = []
-  actorPageIds = [int(line) for line in open('random_actors.txt', 'r').readlines()]
+  # actorPageIds = [int(line) for line in open('random_actors.txt', 'r').readlines()]
+  actorPageIds = [int(line) for line in open(sys.argv[1], 'r').readlines()]
   # for pageId in actorPageIds:
     # dbPage = db.pages.find_one({"_id": pageId})
     # if dbPage != None:
@@ -144,7 +149,7 @@ def get_features_for_actor_page(pageId, actCat, actPlusCat):
   data = calculate_network_features(pageId, actCat, actPlusCat, data)
   print 'Got features!'
   lock.acquire()
-  file = open(sys.argv[1], 'a')
+  file = open(sys.argv[3], 'a')
   fileWriter = csv.writer(file)
   fileWriter.writerow(data)
   file.close()
@@ -158,7 +163,7 @@ def get_features_for_nonActor_page(pageId, actCat, actPlusCat):
   data = calculate_network_features(pageId, actCat, actPlusCat, data)
   print 'Got features!'
   lock.acquire()
-  file = open(sys.argv[1], 'a')
+  file = open(sys.argv[3], 'a')
   fileWriter = csv.writer(file)
   fileWriter.writerow(data)
   file.close()
