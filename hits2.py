@@ -112,6 +112,14 @@ def read_hubs():
 	return hubs_dict
 	
 if __name__ == "__main__":
+	args = sys.argv
+	
+	category_name = args[1]
+	num_examples = args[2]
+	category_list_file = args[3]
+	category_members = args[4]
+	category_nonmembers = args[5]
+
 	write_category_file()
 	graph = category_graph()
 	
