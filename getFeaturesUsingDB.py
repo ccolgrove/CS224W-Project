@@ -1,5 +1,6 @@
 # example run: python getFeaturesUsingDB.py \
-#  "actor_sample_ids_file" "all_sample_ids_file" "output_file"
+#  "actor_sample_ids_file" "all_sample_ids_file" 
+#  "actor_all_ids_file" "actor_all_one_hop_ids_file" "output_file"
 
 import pymongo
 import csv
@@ -13,13 +14,13 @@ from multiprocessing import Pool
 from multiprocessing import Lock
 
 
-SERVER = "ec2-50-112-6-22.us-west-2.compute.amazonaws.com" #new
-#SERVER = "ec2-50-112-32-119.us-west-2.compute.amazonaws.com" #old
+#SERVER = "ec2-50-112-6-22.us-west-2.compute.amazonaws.com" #new
+SERVER = "ec2-50-112-32-119.us-west-2.compute.amazonaws.com" #old
 PORT = 1000
 
 db = pymongo.Connection(SERVER, PORT).wp
 
-LEVELS = 4
+LEVELS = 1
 haveOneHopCats = False
 NUM_THREADS = 1
 #ACTOR_CATEGORIES = set()
@@ -41,7 +42,8 @@ def get_features():
 
   '''
   print 'starting'
-  #print db.categories.find_one()
+  # print db.categories.find_one()
+  # return 0
   #page = db.pages.find_one({"_id": 12})
   #print page
   # page = db.pages.find_one({"_id": 43568}) #tom hanks
@@ -64,21 +66,47 @@ def get_features():
   # for row in catReader:
   #   actorCategoryIds.append(row[0])
 
-  actorPageReader = csv.reader(open('actor_ids.txt'))
+  actorPageReader = csv.reader(open(sys.argv[3]))
   allActorPageIds = set()
   for row in actorPageReader:
     allActorPageIds.add(int(row[0]))
 
-  actorPageReader = csv.reader(open('actor_one_hop_ids.txt'))
+  actorPageReader = csv.reader(open(sys.argv[4]))
   allActorAndNeighborPageIds = set()
   for row in actorPageReader:
     allActorAndNeighborPageIds.add(int(row[0]))
 
-  ''' 
   # getting category ids from db
-  outfile = open('american_actors_categories_catids_noDuplicates.txt', 'w')
-  catFile = open('american_actors_categories_titles_noDuplicates.txt', 'rb')
+  # outfile = open('american_actors_categories_catids_noDuplicates.txt', 'w')
+  # catFile = open('american_actors_categories_titles_noDuplicates.txt', 'rb')
+  # actorCategoryIds = []
+  # outfile = open('american_musical_theater_actors_catids.txt', 'w')
+  # catFile = open('american_musical_theater_actors_categories.txt', 'rb')
+  # for row in catFile:
+  #   catName = unicode(row[9:-2],'utf-8').replace(' ', '_')
+  #   print catName
+  #   category = db.categories.find_one({"title":catName})
+  #   if category != None:
+  #     actorCategoryIds.append(category["_id"])
+  #     outfile.write(str(category["_id"])+'\n')
+  # outfile.close()
+  
   actorCategoryIds = []
+  outfile = open('american_musical_theater_actors_catids.txt', 'w')
+  catFile = open('american_musical_theater_actors_categories.txt', 'rb')
+  for row in catFile:
+    catName = unicode(row[9:-2],'utf-8').replace(' ', '_')
+    print catName
+    category = db.categories.find_one({"title":catName})
+    if category != None:
+      # print category
+      actorCategoryIds.append(category["_id"])
+      outfile.write(str(category["_id"])+'\n')
+  outfile.close()
+
+  actorCategoryIds = []
+  outfile = open('desserts_catids.txt', 'w')
+  catFile = open('desserts_categories.txt', 'rb')
   for row in catFile:
     catName = unicode(row[9:-2],'utf-8').replace(' ', '_')
     print catName
@@ -87,8 +115,23 @@ def get_features():
       actorCategoryIds.append(category["_id"])
       outfile.write(str(category["_id"])+'\n')
   outfile.close()
-  '''
 
+  actorCategoryIds = []
+  outfile = open('graph_theory_catids.txt', 'w')
+  catFile = open('graph_theory_categories.txt', 'rb')
+  for row in catFile:
+    catName = unicode(row[9:-2],'utf-8').replace(' ', '_')
+    print catName
+    category = db.categories.find_one({"title":catName})
+    if category != None:
+      actorCategoryIds.append(category["_id"])
+      outfile.write(str(category["_id"])+'\n')
+  outfile.close()
+
+
+
+  print 'done!'
+  return 0
   '''
   # getting random nonactor pages using api
   outfile = open('random_nonActors.txt', 'w')
