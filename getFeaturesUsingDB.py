@@ -91,6 +91,7 @@ def get_features():
   #     outfile.write(str(category["_id"])+'\n')
   # outfile.close()
   
+<<<<<<< HEAD
   actorCategoryIds = []
   outfile = open('american_musical_theater_actors_catids.txt', 'w')
   catFile = open('american_musical_theater_actors_categories.txt', 'rb')
@@ -103,6 +104,8 @@ def get_features():
       actorCategoryIds.append(category["_id"])
       outfile.write(str(category["_id"])+'\n')
   outfile.close()
+=======
+>>>>>>> 287972b97a0c3a1573de92c80100b1e0665120c6
 
   actorCategoryIds = []
   outfile = open('desserts_catids.txt', 'w')
@@ -141,7 +144,7 @@ def get_features():
     for page in queryResults['query']['random']:
       dbPage = db.pages.find_one({"_id": page['id']})
       if dbPage != None:
-      	nonActorPages.append(dbPage)
+        nonActorPages.append(dbPage)
         print 'writing ' + str(page['id'])
         outfile.write(str(page['id'])+'\n')
   '''
