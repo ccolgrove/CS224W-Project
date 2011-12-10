@@ -2,10 +2,11 @@ import numpy
 import networkx as nx
 import pymongo
 import csv
+import sys
 
 #data files
 num_examples = 50
-category_name = "actor"
+category_name = "tmp"
 category_list_file = "american_actors_categories_catids_noDuplicates.txt"
 category_members = "random_actors.txt"
 category_nonmembers = "random_nonActors.txt"
@@ -114,8 +115,8 @@ def read_hubs():
 if __name__ == "__main__":
 	args = sys.argv
 	
-	category_name = args[1]
-	num_examples = args[2]
+	features_file = args[1]
+	num_examples = int(args[2])
 	category_list_file = args[3]
 	category_members = args[4]
 	category_nonmembers = args[5]
