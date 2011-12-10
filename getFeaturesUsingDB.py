@@ -14,8 +14,8 @@ from multiprocessing import Pool
 from multiprocessing import Lock
 
 
-#SERVER = "ec2-50-112-6-22.us-west-2.compute.amazonaws.com" #new
-SERVER = "ec2-50-112-32-119.us-west-2.compute.amazonaws.com" #old
+SERVER = "ec2-50-112-6-22.us-west-2.compute.amazonaws.com" #new
+#SERVER = "ec2-50-112-32-119.us-west-2.compute.amazonaws.com" #old
 PORT = 1000
 
 db = pymongo.Connection(SERVER, PORT).wp
@@ -49,7 +49,7 @@ def get_features():
   # page = db.pages.find_one({"_id": 43568}) #tom hanks
   # print page
   
-  file = open(sys.argv[3], 'wb')
+  file = open(sys.argv[5], 'wb')
   fileWriter = csv.writer(file)
   labels = ['PageId','Class']
   for level in range(LEVELS):
@@ -91,50 +91,7 @@ def get_features():
   #     outfile.write(str(category["_id"])+'\n')
   # outfile.close()
   
-<<<<<<< HEAD
-  actorCategoryIds = []
-  outfile = open('american_musical_theater_actors_catids.txt', 'w')
-  catFile = open('american_musical_theater_actors_categories.txt', 'rb')
-  for row in catFile:
-    catName = unicode(row[9:-2],'utf-8').replace(' ', '_')
-    print catName
-    category = db.categories.find_one({"title":catName})
-    if category != None:
-      # print category
-      actorCategoryIds.append(category["_id"])
-      outfile.write(str(category["_id"])+'\n')
-  outfile.close()
-=======
->>>>>>> 287972b97a0c3a1573de92c80100b1e0665120c6
 
-  actorCategoryIds = []
-  outfile = open('desserts_catids.txt', 'w')
-  catFile = open('desserts_categories.txt', 'rb')
-  for row in catFile:
-    catName = unicode(row[9:-2],'utf-8').replace(' ', '_')
-    print catName
-    category = db.categories.find_one({"title":catName})
-    if category != None:
-      actorCategoryIds.append(category["_id"])
-      outfile.write(str(category["_id"])+'\n')
-  outfile.close()
-
-  actorCategoryIds = []
-  outfile = open('graph_theory_catids.txt', 'w')
-  catFile = open('graph_theory_categories.txt', 'rb')
-  for row in catFile:
-    catName = unicode(row[9:-2],'utf-8').replace(' ', '_')
-    print catName
-    category = db.categories.find_one({"title":catName})
-    if category != None:
-      actorCategoryIds.append(category["_id"])
-      outfile.write(str(category["_id"])+'\n')
-  outfile.close()
-
-
-
-  print 'done!'
-  return 0
   '''
   # getting random nonactor pages using api
   outfile = open('random_nonActors.txt', 'w')
@@ -195,7 +152,7 @@ def get_features_for_actor_page(pageId, actCat, actPlusCat):
   data = calculate_network_features(pageId, actCat, actPlusCat, data)
   print 'Got features!'
   lock.acquire()
-  file = open(sys.argv[3], 'a')
+  file = open(sys.argv[5], 'a')
   fileWriter = csv.writer(file)
   fileWriter.writerow(data)
   file.close()
@@ -209,7 +166,7 @@ def get_features_for_nonActor_page(pageId, actCat, actPlusCat):
   data = calculate_network_features(pageId, actCat, actPlusCat, data)
   print 'Got features!'
   lock.acquire()
-  file = open(sys.argv[3], 'a')
+  file = open(sys.argv[5], 'a')
   fileWriter = csv.writer(file)
   fileWriter.writerow(data)
   file.close()
