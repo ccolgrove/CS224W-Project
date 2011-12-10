@@ -20,7 +20,7 @@ PORT = 1000
 
 db = pymongo.Connection(SERVER, PORT).wp
 
-LEVELS = 1
+LEVELS = 2
 haveOneHopCats = False
 NUM_THREADS = 1
 #ACTOR_CATEGORIES = set()
@@ -66,12 +66,12 @@ def get_features():
   # for row in catReader:
   #   actorCategoryIds.append(row[0])
 
-  actorPageReader = csv.reader(open(sys.argv[4]))
+  actorPageReader = csv.reader(open(sys.argv[3]))
   allActorPageIds = set()
   for row in actorPageReader:
     allActorPageIds.add(int(row[0]))
 
-  actorPageReader = csv.reader(open(sys.argv[5]))
+  actorPageReader = csv.reader(open(sys.argv[4]))
   allActorAndNeighborPageIds = set()
   for row in actorPageReader:
     allActorAndNeighborPageIds.add(int(row[0]))
