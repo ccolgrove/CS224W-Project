@@ -58,8 +58,8 @@ def add_to_graph(actor, graph):
 		graph.add_edge(id, int(edge))
 
 if __name__ == "__main__":
-	#category_name = args[1]
-	#category_list_file = args[2]
+	category_name = args[1]
+	category_list_file = args[2]
 
 	write_category_file()
 	graph = category_graph()
