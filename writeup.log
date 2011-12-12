@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  11 DEC 2011 21:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  11 DEC 2011 21:42
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -331,7 +331,7 @@ File: images/levelInOutPlots.png Graphic file (type png)
 
 <use images/levelInOutPlots.png>
 
-LaTeX Warning: Float too large for page by 18.8744pt on input line 131.
+LaTeX Warning: Float too large for page by 57.81427pt on input line 130.
 
 [3] <images/levelInOutPlotsLegend.png, id=107, 122.859pt x 144.54pt>
 File: images/levelInOutPlotsLegend.png Graphic file (type png)
@@ -339,19 +339,19 @@ File: images/levelInOutPlotsLegend.png Graphic file (type png)
 <use images/levelInOutPlotsLegend.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./images/selected_features.png (PNG copy)>] [5 <./images/levelInOutPlots.p
-ng> <./images/levelInOutPlotsLegend.png>]
-Missing character: There is no Õ in font cmr10!
-Missing character: There is no Õ in font cmr10!
-
-<images/svmParameterSelection.png, id=121, 511.9125pt x 377.41pt>
+ [4 <./images/selected_features.png (PNG copy)>]
+<images/svmParameterSelection.png, id=113, 511.9125pt x 377.41pt>
 File: images/svmParameterSelection.png Graphic file (type png)
 
 <use images/svmParameterSelection.png>
-<images/varying_datasize.png, id=122, 574.145pt x 329.23pt>
+<images/varying_datasize.png, id=114, 574.145pt x 329.23pt>
 File: images/varying_datasize.png Graphic file (type png)
 
-<use images/varying_datasize.png>
+<use images/varying_datasize.png> [5 <./images/levelInOutPlots.png> <./images/l
+evelInOutPlotsLegend.png>] [6 <./images/svmParameterSelection.png> <./images/va
+rying_datasize.png (PNG copy)>]
+Missing character: There is no Õ in font cmr10!
+Missing character: There is no Õ in font cmr10!
 Missing character: There is no Ó in font cmr10!
 Missing character: There is no Ó in font cmr10!
 Missing character: There is no Ó in font cmr10!
@@ -362,184 +362,188 @@ Missing character: There is no Ó in font cmr10!
 Missing character: There is no Ó in font cmr10!
 Missing character: There is no Ó in font cmr10!
 
-Underfull \hbox (badness 5460) in paragraph at lines 182--208
+Underfull \hbox (badness 5460) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 a li-brary for sup-port vec-tor ma-chines. 2001.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 182--208
+Underfull \hbox (badness 1342) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 si-fi-ca-tion. 2008. []$\OT1/cmtt/m/n/10 http : / / www . jmlr 
 . org / papers /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 1127) in paragraph at lines 182--208
+Underfull \hbox (badness 1127) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Farin, Ja-copo; Tass, Ric-cardo; and La-niad,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 2762) in paragraph at lines 182--208
+Underfull \hbox (badness 2762) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Hol-loway, Todd and Boz-ice-vic, Mi-ran and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 4492) in paragraph at lines 182--208
+Underfull \hbox (badness 4492) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Holmes, G. and Donkin, A. ``WEKA: a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 ma-chine learn-ing work-bench. 2002. []$\OT1/cmtt/m/n/10 http :
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 182--208
+Underfull \hbox (badness 1960) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Lu, Qing and Lise Getoor. ``Link Based
  []
 
 
-Underfull \hbox (badness 7722) in paragraph at lines 182--208
+Underfull \hbox (badness 7722) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 Clas-si-fi-ca-tion. 2003. []$\OT1/cmtt/m/n/10 https : / / www .
  aaai . org /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 3514) in paragraph at lines 182--208
+Underfull \hbox (badness 3514) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Mark Hall, Eibe Frank, Ge-of-frey Holmes,
  []
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 182--208
+Underfull \hbox (badness 1533) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 Bern-hard Pfahringer, Pe-ter Reute-mann, Ian H.
  []
 
 
-Underfull \hbox (badness 1087) in paragraph at lines 182--208
+Underfull \hbox (badness 1087) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 An Up-date; SIGKDD Ex-plo-rations, Vol-ume 11,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 2142) in paragraph at lines 182--208
+Underfull \hbox (badness 2142) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Schon-hofen, P. ``Iden-ti-fy-ing Doc-u-ment Top-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 182--208
+Underfull \hbox (badness 2245) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Sorg, Lipp and Cimi-ano, Philipp. ``En-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 rich-ing the crosslin-gual link struc-ture of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 Wikipedia - A classification-based ap-proach.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 182--208
+Underfull \hbox (badness 1038) in paragraph at lines 188--214
 \OT1/cmr/m/n/10 M. Do-mazet. ``Wikipedias: Col-lab-o-ra-tive web-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 3250) in paragraph at lines 182--208
+Underfull \hbox (badness 3250) in paragraph at lines 188--214
 [] \OT1/cmr/m/n/10 Klein-berg, Jon M. ``Au-thor-i-ta-tive Sources
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--208
+Underfull \hbox (badness 10000) in paragraph at lines 188--214
 [] []$\OT1/cmtt/m/n/10 http : / / en . wikipedia . org / wiki / Special :
  []
 
-[6] [7 <./images/svmParameterSelection.png> <./images/varying_datasize.png (PNG
- copy)>] [8
 
-] (./writeup.aux) ) 
+Underfull \vbox (badness 2680) has occurred while \output is active []
+
+ [7]
+Underfull \vbox (badness 4303) has occurred while \output is active []
+
+ [8]
+(./writeup.aux) ) 
 Here is how much of TeX's memory you used:
- 4890 strings out of 493848
- 70335 string characters out of 3149207
- 151382 words of memory out of 3000000
+ 4889 strings out of 493848
+ 70327 string characters out of 3149207
+ 153382 words of memory out of 3000000
  8056 multiletter control sequences out of 15000+200000
  11671 words of font info for 46 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,7n,36p,1197b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmex10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-17.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10
-.pfb>
-Output written on writeup.pdf (8 pages, 328688 bytes).
+ 38i,7n,36p,1255b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
+.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
+fb>
+Output written on writeup.pdf (8 pages, 330118 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
+ 199 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
  170 words of extra memory for PDF output out of 10000 (max. 10000000)
 

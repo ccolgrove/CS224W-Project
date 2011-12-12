@@ -126,19 +126,18 @@ We ran several different learning algorithms on our feature sets: Naive Bayes, L
 The goal of our initial classifier was to classify articles as either part of the ``American Actors" category or not. We chose this particular category because it is one of the largest on Wikipedia (almost 25,000 pages), which ensures that there will be many positive examples. We also ran the classifier on the ``American Musical Theater Actors" category, which is a subcategory of the ``American Actors" category , on the ``Desserts" category, and on the ``Graph Theory" category, each of which contains a few thousand pages.
 
 \begin{figure}
-\caption{Performance of classifier at different levels of in and out links on various categories}.
-\includegraphics[scale=0.9]{images/levelInOutPlots.png}
+\includegraphics[scale=1]{images/levelInOutPlots.png}
 \end{figure}
 
 \begin{figure}
-\caption{Legend}.
+\caption{Performance of classifier at different levels of in and out links on various categories}.
 \includegraphics[scale=0.7]{images/levelInOutPlotsLegend.png}
 \end{figure}
 
 
 \subsection{Features}
 
-For the American Actors category, the out-link and in-link features turned out to be best subset of features.  In order to perform features selection, we used the meta classifier WrapperSubsetEval to optimize for the f-score of logistic regression classifier over five folds.  To select which subsets of features that would be tested, we used bi-directional best first search with backtracking up to fifteen steps.  We wanted to test whether the selected features generalized across different categories.  Thus, we performed this feature selection for all four categories (Figure [1]).  InlinkProp2, which is the the proportion of in links at level 2, was in every optimal subset. In second place showing up in three of the four category optimal subsets was the proportion of out links at level 1.  Half of the level three features never occurred in any of the optimal subsets. 
+For the American Actors category, the out-link and in-link features turned out to be best subset of features.  In order to perform features selection, we used the meta classifier WrapperSubsetEval to optimize for the f-score of logistic regression classifier over five folds.  To select which subsets of features that would be tested, we used bi-directional best first search with backtracking up to fifteen steps.  We wanted to test whether the selected features generalized across different categories.  Thus, we performed this feature selection for all four categories (Figure [1]).  InlinkProp2, which is the the proportion of in links at level 2, was in every optimal subset. In second place showing up in three of the four category optimal subsets was the proportion of out links at level 1.  Half of the level three features never occurred in any of the optimal subsets. Based on this analysis, it appears that most of the useful information is gained in the earlier levels, which reduces the computation complexity of calculating these features. 
 
 We ran the classifier on each pair of the out-link and in-link features individually for each of levels 1 through 3, as well as in combination, for a dataset of 100 pages for each category (see Figure [2]).  The level 2 pages were the most effective predictors for all of the categories. This suggests an alternating link structure where intermediate pages between pages of a particular category are complementary pages that perhaps have attributes that are of the category. Consider the case of actors: actor pages are likely to link to non-actor pages, such as movies or awards, that are likely to link to other actor pages. The effect is also perhaps due to the fact that the level 2 pages include more data points than the level 1 pages but are still close enough to the page in question to be relevant. Interestingly, in every case, out-link features performed better than or as good as in-link features for level 1, but worse for level 2.
 
@@ -147,22 +146,6 @@ Using all of the levels as features typically resulted in f-scores between the s
 The experiments discussed above were all performed using regular feature extraction for the link features. We also ran the link feature extraction with the heuristic discussed earlier in order to get a fourth level of features. Combining all 4 of these features performed identically to combining the true 3-level features, suggesting that looking at levels beyond level 2 do not contribute much. Interestingly, looking at only level 2 features found using the heuristic actually gave better f-scores (0.95!) than the standard level 2 features. This suggests that considering all connected pages equally, rather than preferring more connected pages, is more telling of the category of a page. 
 
 All categories were able to be predicted well, especially looking at level 2 features, but some telling differences did appear. The American Musical Theater Actors category, although a very small subset of the American Actors category, still reached an f-score of 0.92. Its performance on level 1 was significantly lower than for the American Actors category, which makes sense since looking at only level 1 will contain far fewer pages in the category, providing insufficient data. The Desserts category classification achieved an f-score of 0.98, and the Graph Theory category classification achieved an f-score of 0.97. These categories are likely much more self-contained than the actors categories, resulting in these better results when looking at community features. Finally, the Graph Theory categorization performed almost equally well for all levels, suggesting that unlike the other categories, its pages and links are homogeneous and all in the same category. Thus, the community features we extracted were effective in classifying each of the categories we considered.
-
-\subsection{Algorithms}
-	We focused on three learning algorithms for performing the classification based on the features discussed above. Logistic regression performed the best in almost all cases. We also explored Naive Bayes, which was typically a few tenths below logistic regression in f-score. With one exception, SVM algorithms (SMO and LibSVM) had lower f-scores, but had good precision for the American Actors category. Since it is arguably more important to avoid miscategorizing pages than to categorize all the pages, we explored whether we could improve the SVM algorithm accuracy through parameter optimization. By plotting contours of the accuracy values with respect to different $c$ and $\gamma$ values (see Figure [4]), we found that the optimal accuracy for an SVM algorithm would still be significantly lower than for logistic regression. We thus use logistic regression for the remainder of our experiments. 
-\subsection{Dataset size}
-
-In order to check whether or not the classifier was over-fitting the rather small dataset of hundred pages (50 American Actor pages and 50 random non-actor pages), we created a dataset of 1560 pages that consisted of 780 American Actor pages and 780 random non-actor pages.  Logistic regression with 10-fold stratified cross validation was able to obtain results of 0.948 precision and 0.868 recall.  Performing this experiment again with feature selection, as described above, resulted in the same 0.947 precision and a slightly higher recall of 0.876.  We then generated random subsets of increasing size from this dataset to obtain the learning curve for all of the features and the selected features (Figure [5]).  Note that the dip seen at size 400 occurred due to the fact that each size set was a randomly created subset of the larger dataset.  These learning curves confirm that the classification is generalizing and not just over-fitting to the small dataset.
-
-\section{Discussion}
-
-\section{Future Work}
-
-Our classifier has proven to be very effective at categorizing Wikipedia pages. Even when we tested narrower categories (such as American Musical Actors), the algorithm performed very well. Because the performance is so good, testing other features would not likely produce a significant improvement. 
-
-However, there are a number of further directions to take this research. The first is to adapt this to fit Wikipedia's categoization system a bit more precisely. Typically, in Wikipedia, categories are not listed as part of the supercategory. They are only officially categorized many levels down in the hierarchy and only implicitly part of the supercategory. As such, extending the classifier to take this into account would produce results more in line with Wikipedia’s current categorization policies. 
-
-The next obvious step would be to write a bot to automatically classify articles. This would be a significant undertaking, because the way our classifier is structured it would have to learn a model for each one of the tens of thousands of categories. For each page, it would have to determine which, if any, of the categories apply. Additionally, human editors could provide feedback on the bot’s classifications, allowing us to apply reinforcement learning to improve the accuracy of the classification. This could ultimately maintain the quality of the category system while freeing human editors to focus on more difficult, content-related edits.
 
 \begin{figure*}
 \begin{center}
@@ -177,6 +160,29 @@ The next obvious step would be to write a bot to automatically classify articles
 \includegraphics[scale=0.75]{images/varying_datasize.png}
 \end{center}
 \end{figure*}
+
+\subsection{Algorithms}
+	We focused on three learning algorithms for performing the classification based on the features discussed above. Logistic regression performed the best in almost all cases. We also explored Naive Bayes, which was typically a few tenths below logistic regression in f-score. With one exception, SVM algorithms (SMO and LibSVM) had lower f-scores, but had good precision for the American Actors category. Since it is arguably more important to avoid miscategorizing pages than to categorize all the pages, we explored whether we could improve the SVM algorithm accuracy through parameter optimization. By plotting contours of the accuracy values with respect to different $c$ and $\gamma$ values (see Figure [3]), we found that the optimal accuracy for an SVM algorithm would still be significantly lower than for logistic regression. We thus use logistic regression for the remainder of our experiments. 
+\subsection{Dataset size}
+
+In order to check whether or not the classifier was over-fitting the rather small dataset of hundred pages (50 American Actor pages and 50 random non-actor pages), we created a dataset of 1560 pages that consisted of 780 American Actor pages and 780 random non-actor pages.  Logistic regression with 10-fold stratified cross validation was able to obtain results of 0.948 precision and 0.868 recall.  Performing this experiment again with feature selection, as described above, resulted in the same 0.947 precision and a slightly higher recall of 0.876.  We then generated random subsets of increasing size from this dataset to obtain the learning curve for all of the features and the selected features (Figure [4]).  Note that the dip seen at size 400 occurred due to the fact that each size set was a randomly created subset of the larger dataset.  These learning curves confirm that the classification is generalizing and not just over-fitting to the small dataset.
+
+\section{Discussion}
+
+When trying to optimize for various measures of success, we decided that the precision of positive categorization was the most important. Intuitively, not categorizing something as an actor that actually is an actor is better than incorrectly categorizing something that is not an actor as one. High precision here will preserve the quality of the labels, which are important to a significant amount of other research. Our classifier successfully meets this goal, with a best precision of 0.948 when running logistic regression on our largest dataset of American Actors using all of our network features. In addition, the recall on this set was 0.868, which means that we are not sacrificing much recall to achieve these scores. Our best American Actors categorization accuracy of 95\% was achieved by running logistic regression on a smaller dataset considering only level 2 features with a normalization heuristic applied. Since our data was equally split, this accuracy is a good measure of our overall success. The network features approach significantly surpassed the NLP approach presented in [4] in every measure of performance. Even our most simplistic classifiers were on par with the greatest success of the NLP-based classifier . 
+
+Some interesting observations also emerge from our results. Initially, we hypothesized that the implicit community structure of Wikipedia roughly corresponds to the official community structure imposed by the category hierarchy. This hypothesis is supported by the fact that, using only the implicit community structure, we were able to successfully predict the official one.
+
+We also noticed that the most predictive link level is level 2, perhaps indicating that pages tend to link to pages of different categories, but that those pages in turn link back to many pages of the original category in a roughly alternating structure.
+
+\section{Future Work}
+
+Our classifier has proven to be very effective at categorizing Wikipedia pages. Even when we tested narrower categories (such as American Musical Actors), the algorithm performed very well. Because the performance is so good, testing other features would not likely produce a significant improvement. 
+
+However, there are a number of further directions to take this research. The first is to adapt this to fit Wikipedia's categoization system a bit more precisely. Typically, in Wikipedia, categories are not listed as part of the supercategory. They are only officially categorized many levels down in the hierarchy and only implicitly part of the supercategory. As such, extending the classifier to take this into account would produce results more in line with Wikipedia’s current categorization policies. 
+
+The next obvious step would be to write a bot to automatically classify articles. This would be a significant undertaking, because the way our classifier is structured it would have to learn a model for each one of the tens of thousands of categories. For each page, it would have to determine which, if any, of the categories apply. Additionally, human editors could provide feedback on the bot’s classifications, allowing us to apply reinforcement learning to improve the accuracy of the classification. Such a project would use our excellent results to enable people to better navigate and understand the wealth of information that is Wikipedia.
+
 \section{References}
 
 \text{[1]} Chang, Chih C. and Lin, Chih J. ``LIBSVM: a library for support vector machines.” 2001. \url{http://www.csie.ntu.edu.tw/\~cjlin/libsvm}.
