@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [1][-]{section.2}{Prior Work}{}
+\BOOKMARK [1][-]{section.3}{Data}{}
+\BOOKMARK [1][-]{section.4}{Model}{}
+\BOOKMARK [2][-]{subsection.4.1}{In-links and Out-links}{section.4}
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Basic Algorithm}{subsection.4.1}
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Heuristic}{subsection.4.1}
+\BOOKMARK [2][-]{subsection.4.2}{HITS}{section.4}
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Basic Algorithm}{subsection.4.2}
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Modification}{subsection.4.2}
+\BOOKMARK [2][-]{subsection.4.3}{Classification}{section.4}
+\BOOKMARK [1][-]{section.5}{Results}{}
+\BOOKMARK [2][-]{subsection.5.1}{Features}{section.5}
+\BOOKMARK [2][-]{subsection.5.2}{Algorithms}{section.5}
+\BOOKMARK [2][-]{subsection.5.3}{Dataset size}{section.5}
+\BOOKMARK [1][-]{section.6}{Discussion}{}
+\BOOKMARK [1][-]{section.7}{Future Work}{}
+\BOOKMARK [1][-]{section.8}{References}{}

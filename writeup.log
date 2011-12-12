@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  11 DEC 2011 18:43
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  11 DEC 2011 21:00
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -15,8 +15,8 @@ lish, portuguese, romanian, russian, sanskrit, serbian, slovak, slovenian, span
 ish, swedish, turkish, ukenglish, ukrainian, uppersorbian, welsh, loaded.
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2009/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -121,69 +121,198 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen114
+\Hy@linkcounter=\count100
+\Hy@pagecounter=\count101
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 3428.
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count102
+\Field@Width=\dimen115
+\Fld@charsize=\dimen116
+\Field@toks=\toks21
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring OFF on input line 4397.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count103
+\c@Item=\count104
+\c@Hfootnote=\count105
+)
+*hyperref using default driver hpdftex*
+(/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count106
+)
 (./writeup.aux)
 \openout1 = `writeup.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 
 (/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count100
-\scratchdimen=\dimen114
+\scratchcounter=\count107
+\scratchdimen=\dimen117
 \scratchbox=\box28
-\nofMPsegments=\count101
-\nofMParguments=\count102
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count103
-\MPscratchDim=\dimen115
-\MPnumerator=\count104
-\everyMPtoPDFconversion=\toks22
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen118
+\MPnumerator=\count111
+\everyMPtoPDFconversion=\toks23
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
- (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
+Package hyperref Info: Link coloring OFF on input line 13.
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count112
+)
+LaTeX Info: Redefining \ref on input line 13.
+LaTeX Info: Redefining \pageref on input line 13.
+
+(./writeup.out) (./writeup.out)
+\@outlinefile=\write3
+\openout3 = `writeup.out'.
+
+\AtBeginShipoutBox=\box29
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Underfull \hbox (badness 1845) in paragraph at lines 25--26
-\OT1/cmr/m/n/10.95 Wikipedia, founded in 2001, is a mas-sive,
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+\OT1/cmr/m/n/10 Wikipedia, founded in 2001, is a mas-sive,
  []
 
-Missing character: There is no Ò in font cmr10!
-Missing character: There is no Ó in font cmr10!
-Missing character: There is no Ò in font cmr10!
-Missing character: There is no Ó in font cmr10!
-Missing character: There is no Ò in font cmr10!
-Missing character: There is no Ó in font cmr10!
-Missing character: There is no Ò in font cmr10!
-Missing character: There is no Ó in font cmr10!
+
+Underfull \hbox (badness 4193) in paragraph at lines 26--27
+\OT1/cmr/m/n/10 collaboratively-edited on-line en-cy-clo-pe-dia. As
+ []
+
 Missing character: There is no Ò in font cmr10!
 Missing character: There is no Ó in font cmr10!
 [1{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 55.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 56.
 
 (/usr/local/texlive/2009/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 55.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 56.
 Missing character: There is no Ò in font cmr10!
 Missing character: There is no Ó in font cmr10!
  [2]
@@ -191,33 +320,225 @@ Missing character: There is no Ò in font cmr10!
 Missing character: There is no Ó in font cmr10!
 Missing character: There is no Ò in font cmr10!
 Missing character: There is no Ó in font cmr10!
- [3]
 Missing character: There is no Õ in font cmr10!
- [4
 
-]
-(./writeup.aux) ) 
+<images/selected_features.png, id=91, 677.53125pt x 413.545pt>
+File: images/selected_features.png Graphic file (type png)
+
+<use images/selected_features.png>
+Missing character: There is no Ò in font cmr10!
+Missing character: There is no Ó in font cmr10!
+ [3]
+<images/levelInOutPlots.png, id=105, 173.448pt x 708.246pt>
+File: images/levelInOutPlots.png Graphic file (type png)
+
+<use images/levelInOutPlots.png>
+
+LaTeX Warning: Float too large for page by 18.8744pt on input line 137.
+
+<images/levelInOutPlotsLegend.png, id=107, 122.859pt x 144.54pt>
+File: images/levelInOutPlotsLegend.png Graphic file (type png)
+
+<use images/levelInOutPlotsLegend.png> [4 <./images/selected_features.png (PNG 
+copy)>]
+Missing character: There is no Õ in font cmr10!
+Missing character: There is no Õ in font cmr10!
+ [5 <./images/levelInOutPlots.png> <./images/levelInOutPlotsLegend.png>]
+Missing character: There is no Õ in font cmr10!
+<images/svmParameterSelection.png, id=121, 511.9125pt x 377.41pt>
+File: images/svmParameterSelection.png Graphic file (type png)
+
+<use images/svmParameterSelection.png>
+<images/varying_datasize.png, id=122, 574.145pt x 329.23pt>
+File: images/varying_datasize.png Graphic file (type png)
+
+<use images/varying_datasize.png>
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+Missing character: There is no Ó in font cmr10!
+
+Underfull \hbox (badness 5460) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 a li-brary for sup-port vec-tor ma-chines. 2001.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 1342) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 si-fi-ca-tion. 2008. []$\OT1/cmtt/m/n/10 http : / / www . jmlr 
+. org / papers /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Farin, Ja-copo; Tass, Ric-cardo; and La-niad,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Hol-loway, Todd and Boz-ice-vic, Mi-ran and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 4492) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Holmes, G. and Donkin, A. ``WEKA: a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 ma-chine learn-ing work-bench. 2002. []$\OT1/cmtt/m/n/10 http :
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Lu, Qing and Lise Getoor. ``Link Based
+ []
+
+
+Underfull \hbox (badness 7722) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 Clas-si-fi-ca-tion. 2003. []$\OT1/cmtt/m/n/10 https : / / www .
+ aaai . org /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 3514) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Mark Hall, Eibe Frank, Ge-of-frey Holmes,
+ []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 Bern-hard Pfahringer, Pe-ter Reute-mann, Ian H.
+ []
+
+
+Underfull \hbox (badness 1087) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 An Up-date; SIGKDD Ex-plo-rations, Vol-ume 11,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Schon-hofen, P. ``Iden-ti-fy-ing Doc-u-ment Top-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 2245) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Sorg, Lipp and Cimi-ano, Philipp. ``En-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 rich-ing the crosslin-gual link struc-ture of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 Wikipedia - A classification-based ap-proach.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 177--203
+\OT1/cmr/m/n/10 M. Do-mazet. ``Wikipedias: Col-lab-o-ra-tive web-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 177--203
+[] \OT1/cmr/m/n/10 Klein-berg, Jon M. ``Au-thor-i-ta-tive Sources
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--203
+[] []$\OT1/cmtt/m/n/10 http : / / en . wikipedia . org / wiki / Special :
+ []
+
+[6] [7 <./images/svmParameterSelection.png> <./images/varying_datasize.png (PNG
+ copy)>] (./writeup.aux) ) 
 Here is how much of TeX's memory you used:
- 1595 strings out of 493848
- 19615 string characters out of 3149207
- 79889 words of memory out of 3000000
- 4886 multiletter control sequences out of 15000+200000
- 11352 words of font info for 43 fonts, out of 3000000 for 9000
+ 4889 strings out of 493848
+ 70329 string characters out of 3149207
+ 150382 words of memory out of 3000000
+ 8056 multiletter control sequences out of 15000+200000
+ 11671 words of font info for 46 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 27i,7n,22p,1191b,221s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmbx10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmex10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi8.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
-.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on writeup.pdf (4 pages, 125937 bytes).
+ 38i,7n,36p,1191b,306s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2009/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmex10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi7.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr17.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmtt10.pfb>
+Output written on writeup.pdf (7 pages, 326086 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 196 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
+ 170 words of extra memory for PDF output out of 10000 (max. 10000000)
 

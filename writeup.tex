@@ -1,4 +1,4 @@
-\documentclass[11pt,twocolumn]{article}
+\documentclass[10pt,twocolumn]{article}
 
 \topmargin -0.5in
 \oddsidemargin 0.0in
@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -26,17 +27,17 @@ Wikipedia, founded in 2001, is a massive, collaboratively-edited online encyclop
 
 The body of a Wikipedia article consists primarily of text, images, and hyperlinks to other articles. In addition to article content, each page is also placed into various relevant categories of articles. The editors of Wikipedia maintain this category hierarchy, manually labeling articles with the most appropriate categories. These categories are often used as the gold standard for semantic NLP problems, such as finding document topics [9]. Categories can also be useful in navigation of Wikipedia, whether simply finding related articles or attempting to find longer paths through the network.
 
-However, as Wikipedia continues to grow, manually labeling categories becomes more and more difficult. With over 80,000 categories, the monumental task requires its own “Uncategorized Task Force” of Wikipedia editors, whose goal is to categorize uncategorized articles. Even so, many articles remain uncategorized or undercategorized.
+However, as Wikipedia continues to grow, manually labeling categories becomes more and more difficult. With over 80,000 categories, the monumental task requires its own “Uncategorized Task Force” of Wikipedia editors, whose goal is to categorize uncategorized articles. Even so, many articles remain uncategorized or undercategorized [13].
 
 Fortunately, many articles in Wikipedia have a wealth of information, from the content of the text to the hyperlink network. These features suggest that an automatic classifier of Wikipedia may be a tractable problem. A classifier with reasonable accuracy could greatly lighten the load of the task force, improve the coverage of articles, and possibly identify and correct miscategorized articles. 
 
 \section{Prior Work}
 
-Previous work in categorizing Wikipedia articles has focused on NLP to automatically classify categories [4]. In the paper “Automatic content-based categorization of Wikipedia articles,” Zeno Gatner and Lars Schmidt-Thieme were able to achieve a F-measure on predicting categories between 0.55 and 0.8 using NLP features. Assigning categories, however, does not have to be only based on NLP, but instead can incorporate features derived from the structure and properties of the underlying network.  Qing Lu and Lise Getoor, in their paper “Link-based Classification,” saw a statistically significant increase in performance on Cora, CiteSeer, and WebKB datasets when network features such as the degree distribution were used rather than just content features [7].  
+Previous work in categorizing Wikipedia articles has focused on NLP to automatically classify categories [4]. In the paper ``Automatic content-based categorization of Wikipedia articles," Zeno Gatner and Lars Schmidt-Thieme were able to achieve a F-measure on predicting categories between 0.55 and 0.8 using NLP features. Assigning categories, however, does not have to be only based on NLP, but instead can incorporate features derived from the structure and properties of the underlying network.  Qing Lu and Lise Getoor, in their paper ``Link-based Classification," saw a statistically significant increase in performance on Cora, CiteSeer, and WebKB datasets when network features such as the degree distribution were used rather than just content features [7].  
 
-Network based features have also been successfully applied to the Wikipedia network [3, 8].  In “Predicting Crosslingual Link Prediction,” Phillip Sorg and Phillipp Cimian, were able to predict crosslingual links by using mainly network derived features (links that connect concepts across different language versions of Wikipedia) with recall of around 70\% and precision of around 94\% [8]. Therefore, we believe that predicting category links based on only network derived features may result in an increase performance over previous NLP attempts, or at the very least increase in performance when used in combination with NLP.
+Network based features have also been successfully applied to the Wikipedia network [3, 8].  In ``Predicting Crosslingual Link Prediction," Phillip Sorg and Phillipp Cimian, were able to predict crosslingual links by using mainly network derived features (links that connect concepts across different language versions of Wikipedia) with recall of around 70\% and precision of around 94\% [8]. Therefore, we believe that predicting category links based on only network derived features may result in an increase performance over previous NLP attempts, or at the very least increase in performance when used in combination with NLP.
 
-Other work has been done with the Wikipedia category graph.  In “Analyzing and Visualizing the Semantic Coverage of Wikipedia and Its Authors,” Holloway et al. analyzed the category graph and noted that it contains cycles, is disconnected, and based on the edit history is kept up to date [5].  Holloway et al. created super categories to deal with the unwieldy nature of the Wikipedia category.  Given that many categories may be small, using supercategories for prediction may be more accurate. 
+Other work has been done with the Wikipedia category graph.  In ``Analyzing and Visualizing the Semantic Coverage of Wikipedia and Its Authors," Holloway et al. analyzed the category graph and noted that it contains cycles, is disconnected, and based on the edit history is kept up to date [5].  Holloway et al. created super categories to deal with the unwieldy nature of the Wikipedia category.  Given that many categories may be small, using supercategories for prediction may be more accurate. 
 
 \section{Data}
 
@@ -113,12 +114,93 @@ To avoid this, we make the following assumption: if HITS has iterated to converg
 
 We ran several different learning algorithms on our feature sets: Naive Bayes, Logistic Regression, and SVM’s. We also ran parameter selection algorithms to optimize performance of each learning algorithm, as well as feature selection algorithms in order to find the most significant features. 
 
+\begin{figure*}
+\begin{center}
+\caption{Results of feature selection}
+\includegraphics[scale=0.65]{images/selected_features.png}
+\end{center}
+\end{figure*}
+
 \section{Results}
+
+The goal of our initial classifier was to classify articles as either part of the “American Actors” category or not. We chose this particular category because it is one of the largest on Wikipedia, which ensures that there will be many positive examples.
+
+\subsection{Features}
+
+For the American Actors category, the out-link and in-link features turned out to be best subset of features.  In order to perform features selection, we used the meta classifier WrapperSubsetEval to optimize for the f-score of logistic regression classifier over five folds.  To select which subsets of features that would be tested, we used bi-directional best first search with backtracking up to fifteen steps.  We wanted to test whether the selected features generalized across different categories.  Thus, we performed this feature selection for all four categories (Figure [2]).  InlinkProp2, which is the the proportion of in links at level 2, was in every optimal subset. In second place showing up in three of the four category optimal subsets was the proportion of out links at level 1.  Half of the level three features never occurred in any of the optimal subsets.  Based on this analysis, it appears that most of the useful information is gained in the earlier levels, which reduces the computation complexity of calculating these features. 
+
+We ran the classifier on each pair of the out-link and in-link features individually for each of levels 1 through 3, as well as in combination, for a dataset of 100 pages for each category (see Figure [1]).  The level 2 pages were the most effective predictors for all of the categories. This suggests an alternating link structure where intermediate pages between pages of a particular category are complementary pages that perhaps have attributes that are of the category. Consider the case of actors: actor pages are likely to link to non-actor pages, such as movies or awards, that are likely to link to other actor pages. The effect is also perhaps due to the fact that the level 2 pages include more data points than the level 1 pages but are still close enough to the page in question to be relevant. Interestingly, in every case, out-link features performed better than or as good as in-link features for level 1, but worse for level 2.
+
+\begin{figure}
+\caption{Performance of classifier at different levels of in and out links on various categories}.
+\includegraphics[scale=0.9]{images/levelInOutPlots.png}
+\end{figure}
+
+\begin{figure}
+\caption{Legend}.
+\includegraphics[scale=0.7]{images/levelInOutPlotsLegend.png}
+\end{figure}
+
+
+\subsection{Algorithms}
+	We focused on three learning algorithms for performing the classification based on the features discussed above. Logistic regression performed the best in almost all cases. We also explored Naive Bayes, which was typically a few percentage points below logistic regression in accuracy. With one exception, SVM algorithms (SMO and LibSVM) had lower accuracy, but had good precision for the American Actors category. Since it is arguably more important to avoid miscategorizing pages than to categorize all the pages, we explored whether we could improve the SVM algorithm accuracy through parameter optimization. By plotting contours of the accuracy values with respect to different $c$ and $\gamma$ values (see Figure [4]), we found that the optimal accuracy for an SVM algorithm would still be significantly lower than for logistic regression. We thus use logistic regression for the remainder of our experiments. 
+
+\subsection{Dataset size}
+
+In order to check whether or not the classifier was over-fitting the rather small dataset of hundred pages (50 American Actor pages and 50 random non-actor pages), we created a dataset of 1560 pages that consisted of 780 American Actor pages and 780 random non-actor pages.  Logistic regression with 10-fold stratified cross validation was able to obtain results of 0.948 precision and 0.868 recall.  Performing this experiment again with feature selection, as described above, resulted in the same 0.948 precision and a slightly higher recall of 0.876.  We then generated random subsets of increasing size from this dataset to obtain the learning curve for all of the features and the selected features (Figure [5]).  Note that the dip seen at size 400 occurred due to the fact that each size set was a randomly created subset of the larger dataset.  These learning curves confirm that the classification is generalizing and not just over-fitting to the small dataset.
 
 \section{Discussion}
 
 \section{Future Work}
 
+Our classifier has proven to be very effective at categorizing Wikipedia pages. Even when we tested narrower categories (such as American Musical Actors), the algorithm performed very well. Because the performance is so good, testing other features would not likely produce a significant improvement. 
+
+However, there are a number of further directions to take this research. The first is to adapt this to fit Wikipedia’s categoization system a bit more precisely. Typically, in Wikipedia, categories are not listed as part of the supercategory. They are only officially categorized many levels down in the hierarchy and only implicitly part of the supercategory. As such, extending the classifier to take this into account would produce results more in line with Wikipedia’s current categorization policies. 
+
+The next obvious step would be to write a bot to automatically classify articles. This would be a significant undertaking, because the way our classifier is structured it would have to learn a model for each one of the tens of thousands of categories. For each page, it would have to determine which, if any, of the categories apply. Additionally, human editors could provide feedback on the bot’s classifications, allowing us to apply reinforcement learning to improve the accuracy of the classification. This could ultimately maintain the quality of the category system while freeing human editors to focus on more difficult, content-related edits.
+
+\begin{figure*}
+\begin{center}
+\caption{Parameter optimization for SVM algorithm.}
+\includegraphics[scale=0.75]{images/svmParameterSelection.png}
+\end{center}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\caption{Performance of classifier on different amounts of data.}
+\includegraphics[scale=0.75]{images/varying_datasize.png}
+\end{center}
+\end{figure*}
 \section{References}
+
+\text{[1]} Chang, Chih C. and Lin, Chih J. ``LIBSVM: a library for support vector machines.” 2001. \url{http://www.csie.ntu.edu.tw/\~cjlin/libsvm}.
+\\\\
+\text{[2]} Fan, Rong-En and Chang, Kai-Wei and Hsieh, Cho-Jui and Wang, Xiang-Rui and Lin, Chih-Jen. ``LIBLINEAR: A Library for Large Linear Classification.” 2008. \url{http://www.jmlr.org/papers/volume9/fan08a/fan08a.pdf}.
+\\\\
+\text{[3]} Farin, Jacopo; Tass, Riccardo; and Laniad, David. ``Assigning Wikipedia articles to macro-categories”. 2011. \url{http://www.ht2011.org/demos_posters/ht2011_submission_139.pdf}.
+\\\\
+\text{[4]} Gantner, Zeno and Schmidt-Thie Lars. ``Automatic content-based categorization of Wikipedia articles”. 2009. \url{http://dl.acm.org/citation.cfm?id=1699765.1699770}.
+\\\\
+\text{[5]} Holloway, Todd and Bozicevic, Miran and Borner, Katy. ``Analyzing and visualizing the semantic coverage of Wikipedia and its authors.” 2007. \url{http://dx.doi.org/10.1002/cplx.20164}.
+\\\\
+\text{[6]} Holmes, G. and Donkin, A. ``WEKA: a machine learning workbench”. 2002. \url{http://dx.doi.org/10.1109/ANZIIS.1994.396988}.
+\\\\
+\text{[7]} Lu, Qing and Lise Getoor. ``Link Based Classification.” 2003. \url{https://www.aaai.org/Papers/ICML/2003/ ICML03-066.pdf}.
+\\\\
+\text{[8]} Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten (2009); The WEKA Data Mining Software: An Update; SIGKDD Explorations, Volume 11, Issue 1.
+\\\\
+\text{[9]} Schonhofen, P. ``Identifying Document Topics Using the Wikipedia Category Network," Web Intelligence, 2006. WI 2006. IEEE/WIC/ACM International Conference on , vol., no., pp.456-462, 18-22 Dec. 2006
+doi: 10.1109/WI.2006.92
+\\\\
+\text{[10]} Sorg, Lipp and Cimiano, Philipp. ``Enriching the crosslingual link structure of Wikipedia - A classification-based approach.” 2008. \url{http://www.aifb.uni-karlsruhe.de/WBS/pso/publications/wikiai08languagelinks.pdf}.
+\\\\
+\text{[11]} Zlatic, V., M. Bozicevic, H. Stefancic, and M. Domazet. ``Wikipedias: Collaborative web-based encyclopedias as complex networks." Physical Reivew. 2006.
+\\\\
+\text{[12]} Kleinberg, Jon M. ``Authoritative Sources in a Hyperlinked Environment.”  Proc. 9th ACM-SIAM Symposium on Discrete Algorithms, 1998.
+\\\\
+\text{[13]} \url{http://en.wikipedia.org/wiki/Special:UncategorizedPages}
+
+
 
 \end{document}
