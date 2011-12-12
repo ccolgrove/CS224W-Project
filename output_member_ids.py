@@ -1,6 +1,7 @@
 import numpy
 import networkx as nx
 import pymongo
+import sys
 
 SERVER = "ec2-50-112-6-22.us-west-2.compute.amazonaws.com" #new
 #SERVER = 'ec2-50-112-32-119.us-west-2.compute.amazonaws.com' #old
@@ -11,8 +12,6 @@ db = pymongo.Connection(SERVER, PORT).wp
 category_name = "actor"
 category_list_file = "american_actors_categories_catids_noDuplicates.txt"
 
-category_id_file = category_name + "_ids.txt"
-category_one_hop_file = category_name + "_one_hop_ids.txt"
 
 def write_category_file():
 	cat_file = open(category_list_file, 'r')
@@ -58,8 +57,10 @@ def add_to_graph(actor, graph):
 		graph.add_edge(id, int(edge))
 
 if __name__ == "__main__":
-	category_name = args[1]
-	category_list_file = args[2]
+	category_name = sys.argv[1]
+	category_list_file = sys.argv[2]
+	category_id_file = category_name + "_ids.txt"
+	category_one_hop_file = category_name + "_one_hop_ids.txt"
 
 	write_category_file()
 	graph = category_graph()

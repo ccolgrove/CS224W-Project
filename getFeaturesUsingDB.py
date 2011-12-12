@@ -20,7 +20,7 @@ PORT = 1000
 
 db = pymongo.Connection(SERVER, PORT).wp
 
-LEVELS = 1
+LEVELS = 2
 haveOneHopCats = False
 NUM_THREADS = 1
 #ACTOR_CATEGORIES = set()
@@ -49,7 +49,7 @@ def get_features():
   # page = db.pages.find_one({"_id": 43568}) #tom hanks
   # print page
   
-  file = open(sys.argv[3], 'wb')
+  file = open(sys.argv[5], 'wb')
   fileWriter = csv.writer(file)
   labels = ['PageId','Class']
   for level in range(LEVELS):
@@ -66,12 +66,12 @@ def get_features():
   # for row in catReader:
   #   actorCategoryIds.append(row[0])
 
-  actorPageReader = csv.reader(open(sys.argv[4]))
+  actorPageReader = csv.reader(open(sys.argv[3]))
   allActorPageIds = set()
   for row in actorPageReader:
     allActorPageIds.add(int(row[0]))
 
-  actorPageReader = csv.reader(open(sys.argv[5]))
+  actorPageReader = csv.reader(open(sys.argv[4]))
   allActorAndNeighborPageIds = set()
   for row in actorPageReader:
     allActorAndNeighborPageIds.add(int(row[0]))
@@ -152,7 +152,7 @@ def get_features_for_actor_page(pageId, actCat, actPlusCat):
   data = calculate_network_features(pageId, actCat, actPlusCat, data)
   print 'Got features!'
   lock.acquire()
-  file = open(sys.argv[3], 'a')
+  file = open(sys.argv[5], 'a')
   fileWriter = csv.writer(file)
   fileWriter.writerow(data)
   file.close()
@@ -166,7 +166,7 @@ def get_features_for_nonActor_page(pageId, actCat, actPlusCat):
   data = calculate_network_features(pageId, actCat, actPlusCat, data)
   print 'Got features!'
   lock.acquire()
-  file = open(sys.argv[3], 'a')
+  file = open(sys.argv[5], 'a')
   fileWriter = csv.writer(file)
   fileWriter.writerow(data)
   file.close()
