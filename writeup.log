@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  11 DEC 2011 22:13
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2009.11.7)  11 DEC 2011 22:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -325,15 +325,15 @@ Missing character: There is no Õ in font cmr10!
 <images/selected_features.png, id=91, 677.53125pt x 413.545pt>
 File: images/selected_features.png Graphic file (type png)
 
-<use images/selected_features.png>
-<images/levelInOutPlots.png, id=92, 173.448pt x 708.246pt>
+<use images/selected_features.png> [3]
+<images/levelInOutPlots.png, id=105, 173.448pt x 708.246pt>
 File: images/levelInOutPlots.png Graphic file (type png)
 
 <use images/levelInOutPlots.png>
 
 LaTeX Warning: Float too large for page by 57.81427pt on input line 130.
 
-[3] <images/levelInOutPlotsLegend.png, id=107, 122.859pt x 144.54pt>
+<images/levelInOutPlotsLegend.png, id=107, 122.859pt x 144.54pt>
 File: images/levelInOutPlotsLegend.png Graphic file (type png)
 
 <use images/levelInOutPlotsLegend.png>
@@ -349,10 +349,13 @@ File: images/svmParameterSelection.png Graphic file (type png)
 File: images/varying_datasize.png Graphic file (type png)
 
 <use images/varying_datasize.png>
+Underfull \vbox (badness 1062) has occurred while \output is active []
+
 Missing character: There is no Õ in font cmr10!
+ [6]
+[7 <./images/svmParameterSelection.png> <./images/varying_datasize.png (PNG cop
+y)>]
 Missing character: There is no Õ in font cmr10!
- [6] [7 <./images/svmParameterSelection.png> <./images/varying_datasize.png (PN
-G copy)>]
 Missing character: There is no Ó in font cmr10!
 Missing character: There is no Ó in font cmr10!
 Missing character: There is no Ó in font cmr10!
@@ -523,7 +526,7 @@ Here is how much of TeX's memory you used:
  8056 multiletter control sequences out of 15000+200000
  11671 words of font info for 46 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,7n,36p,1255b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,7n,36p,1238b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2009/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmbx10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmbx12.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfo
@@ -535,7 +538,7 @@ cm/cmr10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm
 mr17.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y10.pfb></usr/local/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb>
-Output written on writeup.pdf (8 pages, 330814 bytes).
+Output written on writeup.pdf (8 pages, 330848 bytes).
 PDF statistics:
  199 PDF objects out of 1000 (max. 8388607)
  38 named destinations out of 1000 (max. 500000)
