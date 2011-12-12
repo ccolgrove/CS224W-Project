@@ -1,7 +1,7 @@
 import csv
 import sys
 
-def combine_two_csv_files(fa_csv, fb_csv):
+def combine_two_csv_files(fa_csv, fb_csv, f_combine):
     """
         Combines two csv files and outputs the results
         
@@ -24,22 +24,23 @@ def combine_two_csv_files(fa_csv, fb_csv):
             combined_lines[line[0]].extend(line[1:]) 
     
     #output the csv file
-    f_combine = csv.writer(open("combined.csv", 'w'), delimiter=',')
+    
     f_combine.writerow(header)
     for line in combined_lines.values():
         f_combine.writerow(line)
         
 if __name__ == "__main__":
 
-    if len(sys.argv) < 3:
-        print "Usage: features_a.csv features_b.csv"
+    if len(sys.argv) < 4:
+        print "Usage: features_a.csv features_b.csv output.csv"
         print "Combines the two csv feature files"
         print "Assumes that the first column is the id"
         exit()  
     
     fa_csv = csv.reader(open(sys.argv[1], 'r'), delimiter=',')
     fb_csv = csv.reader(open(sys.argv[2], 'r'), delimiter=',')
+    f_combine = csv.writer(open(sys.argv[3], 'w'), delimiter=',')
 
-    combine_two_csv_files(fa_csv, fb_csv)
+    combine_two_csv_files(fa_csv, fb_csv, f_combine)
     
     
