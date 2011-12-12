@@ -17,3 +17,5 @@ python hits2.py $HITS_RESULTS $NUMBER american_actors_categories_catids_noDuplic
 python combine_csv_features.py $RESULTS_NO_HITS $HITS_RESULTS $RESULTS_WITH_HITS
 
 done
+
+python hits2.py "./datasets/american_actors/features/level2/aa_and_random_HITS_800.csv" 800 american_actors_categories_catids_noDuplicates.txt "./datasets/american_actors/aa_800.txt" "./datasets/american_actors/random_800.txt"

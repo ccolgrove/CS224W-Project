@@ -14,6 +14,7 @@ def combine_two_csv_files(fa_csv, fb_csv, f_combine):
     
     combined_lines = {}
     for line in fa_csv:
+        print len(line)
         if len(line) > 0: #Fix for empty lines
             combined_lines[line[0]] = line #insert the whole line to grab the id
     
@@ -21,7 +22,10 @@ def combine_two_csv_files(fa_csv, fb_csv, f_combine):
         #This will throw an exception if an _id doesn't exist in the other
         #Trim of the id since it's already there
         if len(line) > 0: #Fix for empty lines
-            combined_lines[line[0]].extend(line[1:]) 
+            if line[0] in combined_lines:
+                combined_lines[line[0]].extend(line[1:]) 
+            else:
+                import pdb; pdb.set_trace()
     
     #output the csv file
     
